@@ -24,9 +24,10 @@ class Sanscript {
         $this->defaults = array(
             "skip_sgml" => TRUE,
             "syncope" => FALSE,
-            "enableTamilPronounciation" => TRUE,
-            "enableTamilCharPositionFixes" => TRUE,
-            "enableSanskritVedicAccents" => TRUE
+            "enableTamilPronunciation" => TRUE,
+            "enableTamilCharPositionFixes" => FALSE,
+            "enableSanskritVedicAccents" => TRUE,
+            "enableMalayalamChilluSupport" => TRUE
         );
 
         /* Schemes
@@ -58,6 +59,7 @@ class Sanscript {
                 "symbols" => array("০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "ॐ", "ঽ", "।", "॥"),
                 "other" => array("", "", "", "", "ড", "ঢ", "", "য", ""),
                 "accent" =>  ["", ""],
+                "candra" => [''],
                 "combo_accent" => ["", "", "", ""],
             ),
 
@@ -114,6 +116,7 @@ class Sanscript {
             /* Gujarati
              * --------
              * Sanskrit-complete.
+             * Dandas are changed to PERIOD (.) Characters
              */
             "gujarati" => array(
                 "vowels" => array("અ", "આ", "ઇ", "ઈ", "ઉ", "ઊ", "ઋ", "ૠ", "ઌ", "ૡ", "", "એ", "ઐ", "", "ઓ", "ઔ"),
@@ -121,7 +124,7 @@ class Sanscript {
                 "other_marks" => array("ં", "ઃ", "ઁ"),
                 "virama" => array("્"),
                 "consonants" => array("ક", "ખ", "ગ", "ઘ", "ઙ", "ચ", "છ", "જ", "ઝ", "ઞ", "ટ", "ઠ", "ડ", "ઢ", "ણ", "ત", "થ", "દ", "ધ", "ન", "પ", "ફ", "બ", "ભ", "મ", "ય", "ર", "લ", "વ", "શ", "ષ", "સ", "હ", "ળ", "ક્ષ", "જ્ઞ"),
-                "symbols" => array("૦", "૧", "૨", "૩", "૪", "૫", "૬", "૭", "૮", "૯", "ૐ", "ઽ", "।", "॥"),
+                "symbols" => array("૦", "૧", "૨", "૩", "૪", "૫", "૬", "૭", "૮", "૯", "ૐ", "ઽ", ".", "."),
                 "candra" => array("ૅ"),
                 "accent" =>  ["", ""],
                 "combo_accent" => ["", "", "", ""],
@@ -140,6 +143,7 @@ class Sanscript {
                 "symbols" => array("੦", "੧", "੨", "੩", "੪", "੫", "੬", "੭", "੮", "੯", "ॐ", "ऽ", "।", "॥"),
                 "other" => array("", "ਖ", "ਗ", "ਜ", "ਡ", "", "ਫ", "", ""),
                 "accent" =>  ["", ""],
+                "candra" => [''],
                 "combo_accent" => ["", "", "", ""],
             ),
 
@@ -156,6 +160,7 @@ class Sanscript {
                 "symbols" => array("೦", "೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯", "ಓಂ", "ಽ", "।", "॥"),
                 "other" => array("", "", "", "", "", "", "ಫ", "", "ಱ"),
                 "accent" =>  ["", ""],
+                "candra" => [''],
                 "combo_accent" => ["", "", "", ""],
             ),
 
@@ -169,9 +174,10 @@ class Sanscript {
                 "other_marks" => array("ം", "ഃ", "ँ"),
                 "virama" => array("്"),
                 "consonants" => array("ക", "ഖ", "ഗ", "ഘ", "ങ", "ച", "ഛ", "ജ", "ഝ", "ഞ", "ട", "ഠ", "ഡ", "ഢ", "ണ", "ത", "ഥ", "ദ", "ധ", "ന", "പ", "ഫ", "ബ", "ഭ", "മ", "യ", "ര", "ല", "വ", "ശ", "ഷ", "സ", "ഹ", "ള", "ക്ഷ", "ജ്ഞ"),
-                "symbols" => array("൦", "൧", "൨", "൩", "൪", "൫", "൬", "൭", "൮", "൯", "ഓം", "ഽ", "।", "॥"),
+                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "ഓം", "ഽ", "।", "॥"),
                 "other" => array("", "", "", "", "", "", "", "", "റ"),
                 "accent" =>  ["", ""],
+                "candra" => [''],
                 "combo_accent" => ["", "", "", ""],
             ),
 
@@ -188,23 +194,25 @@ class Sanscript {
                 "symbols" => array("୦", "୧", "୨", "୩", "୪", "୫", "୬", "୭", "୮", "୯", "ଓଂ", "ଽ", "।", "॥"),
                 "other" => array("", "", "", "", "ଡ", "ଢ", "", "ଯ", ""),
                 "accent" =>  ["", ""],
+                "candra" => [''],
                 "combo_accent" => ["", "", "", ""],
             ),
 
             /* Tamil
              * -----
-             * Missing R/RR/lR/lRR vowel marks and voice/aspiration distinctions.
-             * The most incomplete of the Sanskrit schemes here.
+             * Sanskrit-complete
              */
             "tamil" => array(
-                "vowels" => explode(' ', 'அ ஆ இ ஈ உ ஊ     எ ஏ ஐ ஒ ஓ ஔ'),
+               // "vowels" => explode(' ', 'அ ஆ இ ஈ உ ஊ     எ ஏ ஐ ஒ ஓ ஔ'),
+                "vowels" => ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "ருʼ", "ரூʼ", "லுʼ", "லூʼ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஔ"],
                 "vowel_marks" =>  explode(' ', 'ா ி ீ ு ூ     ெ ே ை ொ ோ ௌ'),
                 "other_marks" => explode(' ', 'ம்’ ஃ '),
                 "virama" => ['்'],
-                "consonants" => explode(' ', 'க க² க³ க⁴ ங ச ச² ஜ ச ஞ ட ட² ட³ ட⁴ ண த த² த³ த⁴ ந ப ப² ப³ ப⁴ ம ய ர ல வ ஶ ஷ ஸ ஹ ள க்ஷ ஜ்ஞ'),
+                "consonants" => explode(' ', 'க க² க³ க⁴ ங ச ச² ஜ ச ஞ ட ட² ட³ ட⁴ ண த த² த³ த⁴ ன ப ப² ப³ ப⁴ ம ய ர ல வ ஶ ஷ ஸ ஹ ள க்ஷ ஜ்ஞ'),
                 "symbols" => explode(' ', '௦ ௧ ௨ ௩ ௪ ௫ ௬ ௭ ௮ ௯ ஓம்ʼ ऽ । ॥'),
                 "other" => explode(' ', '        ற'),
                 "accent" => ["", ""],
+                "candra" => [''],
                 "combo_accent" => ["", "", "", ""]
             ),
 
@@ -221,6 +229,7 @@ class Sanscript {
                 "symbols" => array("౦", "౧", "౨", "౩", "౪", "౫", "౬", "౭", "౮", "౯", "ఓం", "ఽ", "।", "॥"),
                 "other" => array("", "", "", "", "", "", "", "", "ఱ"),
                 "accent" =>  ["", ""],
+                "candra" => [''],
                 "combo_accent" => ["", "", "", ""],
             ),
 
@@ -235,6 +244,7 @@ class Sanscript {
                 "consonants" => array("k", "kh", "g", "gh", "ṅ", "c", "ch", "j", "jh", "ñ", "ṭ", "ṭh", "ḍ", "ḍh", "ṇ", "t", "th", "d", "dh", "n", "p", "ph", "b", "bh", "m", "y", "r", "l", "v", "ś", "ṣ", "s", "h", "ḻ", "kṣ", "jñ"),
                 "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "oṃ", "'", "।", "॥"),
                 "accent" =>  ["", ""],
+                "candra" => [''],
                 "combo_accent" => ["", "", "", ""],
             ),
 
@@ -269,7 +279,8 @@ class Sanscript {
                 "other_marks" => array("M", "H", "~",),
                 "virama" => array(""),
                 "consonants" => array("k", "kh", "g", "gh", "G", "c", "ch", "j", "jh", "J", "T", "Th", "D", "Dh", "N", "t", "th", "d", "dh", "n", "p", "ph", "b", "bh", "m", "y", "r", "l", "v", "z", "S", "s", "h", "L", "kS", "jJ"),
-                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "OM", "'", "|", "||")
+                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "OM", "'", "|", "||"),
+                "candra" => [''],
             ),
 
             /* National Library at Kolkata
@@ -290,7 +301,8 @@ class Sanscript {
                 "other_marks" => array("M", "H", "~"),
                 "virama" => array(""),
                 "consonants" => array("k", "K", "g", "G", "N", "c", "C", "j", "J", "Y", "w", "W", "q", "Q", "R", "t", "T", "d", "D", "n", "p", "P", "b", "B", "m", "y", "r", "l", "v", "S", "z", "s", "h", "L", "kz", "jY"),
-                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "oM", "'", ".", "..")
+                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "oM", "'", ".", ".."),
+                "candra" => [''],
             ),
 
             /* Velthuis
@@ -302,7 +314,8 @@ class Sanscript {
                 "other_marks" => array(".m", ".h", ""),
                 "virama" => array(""),
                 "consonants" => array("k", "kh", "g", "gh", "\"n", "c", "ch", "j", "jh", "~n", ".t", ".th", ".d", ".d", ".n", "t", "th", "d", "dh", "n", "p", "ph", "b", "bh", "m", "y", "r", "l", "v", "~s", ".s", "s", "h", "L", "k.s", "j~n"),
-                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "o.m", "'", "|", "||")
+                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "o.m", "'", "|", "||"),
+                "candra" => [''],
             ),
 
             /* WX
@@ -314,7 +327,8 @@ class Sanscript {
                 "other_marks" => array("M", "H", "z"),
                 "virama" => array(""),
                 "consonants" => array("k", "K", "g", "G", "f", "c", "C", "j", "J", "F", "t", "T", "d", "D", "N", "w", "W", "x", "X", "n", "p", "P", "b", "B", "m", "y", "r", "l", "v", "S", "R", "s", "h", "", "kR", "jF"),
-                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "oM", "'", "|", "||")
+                "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "oM", "'", "|", "||"),
+                "candra" => [''],
             ),
         );
 
@@ -734,13 +748,40 @@ class Sanscript {
         if ($from === 'itrans' && $to === 'devanagari') {
             $data = str_replace('"', json_decode('"\u1CDA"'), str_replace('\\"', json_decode('"\u1CDA"'), $data));
         }
+        // Malayalam Chillu Support
+        if ($to === 'malayalam' && $options['enableMalayalamChilluSupport'] === true) {
+            // m to M ;
+            $data = str_replace('മ്',"ം", $data);
+            // re-change to glyph when followed by p or m,
+            $data = preg_replace('/ംമ/u',"മ്മ", $data);
+            $data = preg_replace('/ംപ/u',"മ്പ", $data);
+            // change to atomic chillu causes problems for conjunct glyphs
+            // use ZWJ to create chillus for N, n, r, l, L
+            $data = preg_replace('/(ണ്|ന്|ര്|ല്|ള്)/u','${1}'.json_decode('"\u200D"'), $data);
+            // fix NTa NNa
+            $data = preg_replace('/ണ്‍ട/u',"ണ്ട", $data);
+            $data = preg_replace('/ണ്‍ണ/u',"ണ്ണ", $data);
+            // fix nta nna
+            $data = preg_replace('/ന്‍ത/u',"ന്ത", $data);
+            $data = preg_replace('/ന്‍ന/u',"ന്ന", $data);
+            // remove ZWJ when followed by ya la va
+            $data = preg_replace('/\x{200D}(യ|വ|ല)/u','${1}', $data); 
+            // fix for ര്‍വ. - r^va
+            $data = preg_replace('/ര്വ/u', 'ര്‍വ', $data); 
+            // chillu k not used much
+            // alldata = alldata.replace(/ക്/g,"ക്‍")
+            // glyph not defined for this yet
+            // alldata = alldata.replace(/ൻ്റ/g,"ൻ്റ) ")
+        }
 
         // Enable Tamil Accents Support
-        if ($to === 'tamil' && $options['enableTamilPronounciation'] === true) {
+        if ($to === 'tamil' && $options['enableTamilPronunciation'] === true) {
             $data = preg_replace('/(.)(²|³|⁴)(ா|ி|ீ|ு|ூ|ெ|ே|ை|ொ|ோ|ௌ|்)/u','${1}${3}${2}', $data);
         }
         if ($to === 'tamil' && $options['enableTamilCharPositionFixes'] === true) {
-            $data = preg_replace('/([^\s])ந/u', '${1}ன', preg_replace('/(^|\s+)(த|ந்|தை)/u','${1}ந${2}', $data));
+            $data = preg_replace('/([\s-])ன/u', '${1}ந', $data);
+            $data = preg_replace('/ன்த/u',"ந்த", $data);
+            $data = preg_replace('/ன்ன/u',"ந்ந", $data);
         }
         return $data;
     }
