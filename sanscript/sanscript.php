@@ -777,6 +777,9 @@ class Sanscript {
         // Enable Tamil Accents Support
         if ($to === 'tamil' && $options['enableTamilPronunciation'] === true) {
             $data = preg_replace('/(.)(²|³|⁴)(ா|ி|ீ|ு|ூ|ெ|ே|ை|ொ|ோ|ௌ|்)/u','${1}${3}${2}', $data);
+            $data = preg_replace('/(.)(²|³|⁴)(்|:|ʼ|॒|॑|᳚)/u','${1}${3}${2}', $data);
+            $data = preg_replace('/(.)(²|³|⁴|ʼ)(॒|॑|᳚)/u','${1}${3}${2}', $data);
+            $data = preg_replace('/(.)(:)(॒|॑)/u','${1}${3}${2}', $data);
         }
         if ($to === 'tamil' && $options['enableTamilCharPositionFixes'] === true) {
             $data = preg_replace('/([\s-])ன/u', '${1}ந', $data);
