@@ -205,8 +205,8 @@ class Sanscript {
             "tamil" => array(
                // "vowels" => explode(' ', 'அ ஆ இ ஈ உ ஊ     எ ஏ ஐ ஒ ஓ ஔ'),
                 "vowels" => ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "ருʼ", "ரூʼ", "லுʼ", "லூʼ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஔ"],
-                "vowel_marks" =>  explode(' ', 'ா ி ீ ு ூ     ெ ே ை ொ ோ ௌ'),
-                "other_marks" => explode(' ', 'ம்’ ஃ '),
+                "vowel_marks" =>  explode(' ', 'ா ி ீ ு ூ ருʼ ரூʼ லுʼ லூʼ ெ ே ை ொ ோ ௌ'),
+                "other_marks" => explode(' ', 'ம்’ : '),
                 "virama" => ['்'],
                 "consonants" => explode(' ', 'க க² க³ க⁴ ங ச ச² ஜ ச ஞ ட ட² ட³ ட⁴ ண த த² த³ த⁴ ன ப ப² ப³ ப⁴ ம ய ர ல வ ஶ ஷ ஸ ஹ ள க்ஷ ஜ்ஞ'),
                 "symbols" => explode(' ', '௦ ௧ ௨ ௩ ௪ ௫ ௬ ௭ ௮ ௯ ஓம்ʼ ऽ । ॥'),
