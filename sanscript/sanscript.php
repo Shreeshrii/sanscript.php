@@ -100,12 +100,12 @@ class Sanscript {
                 // of parser ambiguity. Thus "barau" -> बरौ but "bara_u" -> बरउ.
                 "skip" => array(""),
 
-                // Vedic accent. Udatta and anudatta.
-                "accent" => json_decode('["\u0951", "\u0952"]'),
+                // Vedic accent. Udatta and anudatta, , double udatta and ardhachandra viraama.
+                "accent" => json_decode('["\u0951", "\u0952", "\u1cda", "\ua8f3"]'),
 
                 // Accent combined with anusvara and and visarga. For compatibility
                 // with ITRANS, which allows the reverse of these four.
-                "combo_accent" => array("ः॑", "ः॒", "ं॑", "ं॒"),
+                "combo_accent" => array("ः॑", "ः॒", "ं॑", "ं॒", "ः ᳚", "ं ᳚"), 
 
                 "candra" => array("ॅ"),
 
@@ -206,7 +206,7 @@ class Sanscript {
                // "vowels" => explode(' ', 'அ ஆ இ ஈ உ ஊ     எ ஏ ஐ ஒ ஓ ஔ'),
                 "vowels" => ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "ருʼ", "ரூʼ", "லுʼ", "லூʼ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஔ"],
                 "vowel_marks" =>  explode(' ', 'ா ி ீ ு ூ ருʼ ரூʼ லுʼ லூʼ ெ ே ை ொ ோ ௌ'),
-                "other_marks" => explode(' ', 'ம்’ : '),
+                "other_marks" => explode("ஂ", "ஃ", ""),
                 "virama" => ['்'],
                 "consonants" => explode(' ', 'க க² க³ க⁴ ங ச ச² ஜ ச ஞ ட ட² ட³ ட⁴ ண த த² த³ த⁴ ன ப ப² ப³ ப⁴ ம ய ர ல வ ஶ ஷ ஸ ஹ ள க்ஷ ஜ்ஞ'),
                 "symbols" => explode(' ', '௦ ௧ ௨ ௩ ௪ ௫ ௬ ௭ ௮ ௯ ஓம்ʼ ऽ । ॥'),
@@ -243,7 +243,7 @@ class Sanscript {
                 "virama" => array(""),
                 "consonants" => array("k", "kh", "g", "gh", "ṅ", "c", "ch", "j", "jh", "ñ", "ṭ", "ṭh", "ḍ", "ḍh", "ṇ", "t", "th", "d", "dh", "n", "p", "ph", "b", "bh", "m", "y", "r", "l", "v", "ś", "ṣ", "s", "h", "ḻ", "kṣ", "jñ"),
                 "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "oṃ", "'", "।", "॥"),
-                "accent" =>  ["", ""],
+                "accent" => array("'", '_', '"', 'ꣳ'),
                 "candra" => [''],
                 "combo_accent" => ["", "", "", ""],
             ),
@@ -265,8 +265,8 @@ class Sanscript {
                 "candra" => array(".c"),
                 "zwj" => array("{}"),
                 "skip" => "_",
-                "accent" => array("\\'", "\\_"),
-                "combo_accent" => array("\\'H", "\\_H", "\\'M", "\\_M"),
+                "accent" => array("\\'", '\\_', '\\"', '{\\m+}'),
+                "combo_accent" => array("\\'H", "\\_H", "\\'M", "\\_M", '\\"H', '\\"M'),
                 "other" => array("q", "K", "G", "z", ".D", ".Dh", "f", "Y", "R")
             ),
 
@@ -733,8 +733,9 @@ class Sanscript {
 
         // Easy way out for "{\m+}", "\", and ".h".
         if ($from === 'itrans') {
-            $data = preg_replace("/\{\\\m\+\}/u", ".h.N", $data);
+            $data = preg_replace("/\{\\\m\+\}/u", "ꣳ", $data);
             $data = preg_replace("/\.h/u", "", $data);
+            $data = preg_replace('/\\"/u', '᳚', $data);
             $data = preg_replace("/\\\([^'`_]|$)/u", "##$1##", $data);
         }
 
