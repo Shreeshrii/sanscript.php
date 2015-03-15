@@ -744,11 +744,12 @@ class Sanscript {
          // kannada - anusavara
         if ($to === 'kannada') {
         // change panchama varna to anusvar
-            $data = preg_replace('/ಙ್(ಕ|ಖ|ಗ|ಘ)/u',"ಂ${1}", $data);
-            $data = preg_replace('/ಞ್(ಚ|ಛ|ಜ|ಝ)/u',"ಂ${1}", $data);
-            $data = preg_replace('/ಣ್(ಟ|ಠ|ಡ|ಢ)/u',"ಂ${1}", $data);
-            $data = preg_replace('/ನ್(ತ|ಥ|ದ|ಧ)/u',"ಂ${1}", $data);
-            $data = preg_replace('/ಮ್(ಪ|ಫ|ಬ|ಭ)/u',"ಂ${1}", $data);
+            $data = preg_replace('/ಙ್(ಕ|ಖ|ಗ|ಘ)/u','ಂ${1}', $data);
+            $data = preg_replace('/ಞ್(ಚ|ಛ|ಜ|ಝ)/u','ಂ${1}', $data);
+            $data = preg_replace('/ಣ್(ಟ|ಠ|ಡ|ಢ)/u','ಂ${1}', $data);
+            $data = preg_replace('/ನ್(ತ|ಥ|ದ|ಧ)/u','ಂ${1}', $data);
+            $data = preg_replace('/ಮ್(ಪ|ಫ|ಬ|ಭ)/u','ಂ${1}', $data);
+            $data = preg_replace('/ಮ್(\s|\p{P})/u','ಂ${1}', $data);
         }   
         
         // Malayalam Chillu Support
