@@ -5,6 +5,8 @@
  * Sanscript is a Sanskrit transliteration library. Currently, it supports
  * other Indian languages only incidentally.
  *
+ * Last updated on 3/15/2015 by Shree for Kannada Anusvar
+ *
  * Released under the MIT and GPL Licenses.
  */
 
@@ -55,7 +57,7 @@ class Sanscript {
                 "vowel_marks" => array("া", "ি", "ী", "ু", "ূ", "ৃ", "ৄ", "ৢ", "ৣ", "", "ে", "ৈ", "", "ো", "ৌ"),
                 "other_marks" => array("ং", "ঃ", "ঁ"),
                 "virama" => array("্"),
-                "consonants" => array("ক", "খ", "গ", "ঘ", "ঙ", "চ", "ছ", "জ", "ঝ", "ঞ", "ট", "ঠ", "ড", "ঢ", "ণ", "ত", "থ", "দ", "ধ", "ন", "প", "ফ", "ব", "ভ", "ম", "য", "র", "ল", "ব", "শ", "ষ", "স", "হ", "ळ", "ক্ষ", "জ্ঞ"),
+                "consonants" => array("ক", "খ", "গ", "ঘ", "ঙ", "চ", "ছ", "জ", "ঝ", "ঞ", "ট", "ঠ", "ড", "ঢ", "ণ", "ত", "থ", "দ", "ধ", "ন", "প", "ফ", "ব", "ভ", "ম", "য়", "র", "ল", "ব", "শ", "ষ", "স", "হ", "ळ", "ক্ষ", "জ্ঞ"),
                 "symbols" => array("০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "ॐ", "ঽ", "।", "॥"),
                 "other" => array("", "", "", "", "ড", "ঢ", "", "য", ""),
 
@@ -122,7 +124,7 @@ class Sanscript {
                 "other_marks" => array("ં", "ઃ", "ઁ"),
                 "virama" => array("્"),
                 "consonants" => array("ક", "ખ", "ગ", "ઘ", "ઙ", "ચ", "છ", "જ", "ઝ", "ઞ", "ટ", "ઠ", "ડ", "ઢ", "ણ", "ત", "થ", "દ", "ધ", "ન", "પ", "ફ", "બ", "ભ", "મ", "ય", "ર", "લ", "વ", "શ", "ષ", "સ", "હ", "ળ", "ક્ષ", "જ્ઞ"),
-                "symbols" => array("૦", "૧", "૨", "૩", "૪", "૫", "૬", "૭", "૮", "૯", "ૐ", "ઽ", ".", "."),
+                "symbols" => array("૦", "૧", "૨", "૩", "૪", "૫", "૬", "૭", "૮", "૯", "ૐ", "ઽ", "।", "॥"),
                 "candra" => array("ૅ")
 
             ),
@@ -181,7 +183,7 @@ class Sanscript {
                 "vowel_marks" => array("ା", "ି", "ୀ", "ୁ", "ୂ", "ୃ", "ୄ", "", "", "", "େ", "ୈ", "", "ୋ", "ୌ"),
                 "other_marks" => array("ଂ", "ଃ", "ଁ"),
                 "virama" => array("୍"),
-                "consonants" => array("କ", "ଖ", "ଗ", "ଘ", "ଙ", "ଚ", "ଛ", "ଜ", "ଝ", "ଞ", "ଟ", "ଠ", "ଡ", "ଢ", "ଣ", "ତ", "ଥ", "ଦ", "ଧ", "ନ", "ପ", "ଫ", "ବ", "ଭ", "ମ", "ଯ", "ର", "ଲ", "ଵ", "ଶ", "ଷ", "ସ", "ହ", "ଳ", "କ୍ଷ", "ଜ୍ଞ"),
+                "consonants" => array("କ", "ଖ", "ଗ", "ଘ", "ଙ", "ଚ", "ଛ", "ଜ", "ଝ", "ଞ", "ଟ", "ଠ", "ଡ", "ଢ", "ଣ", "ତ", "ଥ", "ଦ", "ଧ", "ନ", "ପ", "ଫ", "ବ", "ଭ", "ମ", "ୟ", "ର", "ଲ", "ଵ", "ଶ", "ଷ", "ସ", "ହ", "ଳ", "କ୍ଷ", "ଜ୍ଞ"),
                 "symbols" => array("୦", "୧", "୨", "୩", "୪", "୫", "୬", "୭", "୮", "୯", "ଓଂ", "ଽ", "।", "॥"),
                 "other" => array("", "", "", "", "ଡ", "ଢ", "", "ଯ", "")
 
@@ -732,22 +734,49 @@ class Sanscript {
         if ($from === 'itrans' && $to === 'devanagari') {
             $data = str_replace('"', json_decode('"\u1CDA"'), str_replace('\\"', json_decode('"\u1CDA"'), $data));
         }
+        
+        // bengali ya -change virama plus য় to virama plus য
+        if ($to === 'bengali') {
+        // fix conjunct forms
+            $data = str_replace('্য়',"্য", $data);
+        }
+        
+         // kannada - anusavara
+        if ($to === 'kannada') {
+        // change panchama varna to anusvar
+            $data = preg_replace('/ಙ್(ಕ|ಖ|ಗ|ಘ)/u',"ಂ${1}", $data);
+            $data = preg_replace('/ಞ್(ಚ|ಛ|ಜ|ಝ)/u',"ಂ${1}", $data);
+            $data = preg_replace('/ಣ್(ಟ|ಠ|ಡ|ಢ)/u',"ಂ${1}", $data);
+            $data = preg_replace('/ನ್(ತ|ಥ|ದ|ಧ)/u',"ಂ${1}", $data);
+            $data = preg_replace('/ಮ್(ಪ|ಫ|ಬ|ಭ)/u',"ಂ${1}", $data);
+        }   
+        
         // Malayalam Chillu Support
         if ($to === 'malayalam' && $options['enableMalayalamChilluSupport'] === true) {
             // m to M ;
             $data = str_replace('മ്',"ം", $data);
+            // use ZWJ to create chillus for N, n, r, l, L
+            $data = preg_replace('/(ണ്|ന്|ര്|ല്|ള്)/u','${1}'.json_decode('"\u200D"'), $data);
             // re-change to glyph when followed by p or m,
             $data = preg_replace('/ംമ/u',"മ്മ", $data);
             $data = preg_replace('/ംപ/u',"മ്പ", $data);
-            // change to atomic chillu causes problems for conjunct glyphs
-            // use ZWJ to create chillus for N, n, r, l, L
-            // $data = preg_replace('/(ണ്|ന്|ര്|ല്|ള്)/u','${1}'.json_decode('"\u200D"'), $data);
-            $data = preg_replace('/(ര്|ല്|ള്)/u','${1}'.json_decode('"\u200D"'), $data);            
-            // fix NTa NNa
+            // or when following t as in gm tm  nm mm Nm
+            $data = preg_replace('/ഗ്ം/u',"ഗ്മ്", $data);
+            $data = preg_replace('/ത്ം/u',"ത്മ്", $data);
+            $data = preg_replace('/ൻം/u',"ന്മ്", $data);
+            $data = preg_replace('/ംം/u',"മ്മ്", $data);            
+            $data = preg_replace('/ൺം/u',"ണ്മ്", $data);        
+            // fix NTa to NNa
             $data = preg_replace('/ണ്‍ട/u',"ണ്ട", $data);
+            $data = preg_replace('/ണ്‍ഠ/u',"ണ്ഠ", $data);
+            $data = preg_replace('/ണ്‍ഡ/u',"ണ്ഡ", $data);
+            $data = preg_replace('/ണ്‍ഢ/u',"ണ്ഢ", $data);            
             $data = preg_replace('/ണ്‍ണ/u',"ണ്ണ", $data);
-            // fix nta nna
+            // fix nta to nna
             $data = preg_replace('/ന്‍ത/u',"ന്ത", $data);
+            $data = preg_replace('/ന്‍ഥ/u',"ന്ഥ", $data);
+            $data = preg_replace('/ന്‍ദ/u',"ന്ദ", $data);
+            $data = preg_replace('/ന്‍ധ/u',"ന്ധ", $data);            
             $data = preg_replace('/ന്‍ന/u',"ന്ന", $data);
             // remove ZWJ when followed by ya la va
             $data = preg_replace('/\x{200D}(യ|വ|ല)/u','${1}', $data); 
@@ -766,7 +795,7 @@ class Sanscript {
             $data = preg_replace('/(.)(:)(॒|॑)/u','${1}${3}${2}', $data);
         }
         if ($to === 'tamil' && $options['enableTamilCharPositionFixes'] === true) {
-            $data = preg_replace('/([\s>-])ன/u', '${1}ந', $data);
+            $data = preg_replace('/([\s\p{P}])ன/u', '${1}ந', $data);
             $data = preg_replace('/^ன/u', 'ந', $data);
             $data = preg_replace('/ன்த/u',"ந்த", $data);
         /*  $data = preg_replace('/ன்ன/u',"ந்ந", $data); */
