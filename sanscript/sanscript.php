@@ -793,12 +793,37 @@ class Sanscript {
             $data = preg_replace('/(.)(:)(॒|॑)/u','${1}${3}${2}', $data);
         }
         if ($to === 'tamil' && $options['enableTamilCharPositionFixes'] === true) {
-            $data = preg_replace('/([\s><\p{P}])ன/u', '${1}ந', $data);
-            $data = preg_replace('/^ன/u', 'ந', $data);
-            $data = preg_replace('/ன்த/u',"ந்த", $data);
-        /*  $data = preg_replace('/ன்ன/u',"ந்ந", $data); */
-            $data = preg_replace('/னாம/u',"நாம", $data);
-            $data = preg_replace('/னாராயண/u',"நாராயண", $data);
+           $data = preg_replace('/மங்க³ள்ய/u', 'மங்க³ல்ய', $data);
+           $data = preg_replace('/ம்க/u', 'ங்க', $data);
+           $data = preg_replace('/ம்ச/u', 'ஞ்ச', $data);
+           $data = preg_replace('/ம்ஜ/u', 'ஞ்ஜ', $data);
+           $data = preg_replace('/ஞ்ஜ்ஞ/u', 'ம்ஜ்ஞ', $data);
+           $data = preg_replace('/ம்த/u', 'ந்த', $data);
+           $data = preg_replace('/ம்ட/u', 'ண்ட', $data);
+           $data = preg_replace('/யுக³ல/u', 'யுக³ள', $data);
+           $data = preg_replace('/துலஸீ/u', 'துளஸீ', $data);
+           $data = preg_replace('/தும்ப³ர-தால/u', 'தும்ப³ர-தாள', $data);
+           $data = preg_replace('/ராக³தால/u', 'ராக³தாள', $data);
+           $data = preg_replace('/மங்க³ல/u', 'மங்க³ள', $data);
+           $data = preg_replace('/மம்க³ல/u', 'மங்க³ள', $data);
+           $data = preg_replace('/த⁴வல/u', 'த⁴வள', $data);
+           $data = preg_replace('/மஞ்ஜுல/u', 'மஞ்ஜுள', $data);
+           $data = preg_replace('/கீர்தநாவல/u', 'கீர்தநாவள', $data);
+           $data = preg_replace('/முக்தாவல/u', 'முக்தாவள', $data);
+           $data = preg_replace('/நாமாவல/u', 'நாமாவள', $data);
+           $data = preg_replace('/புஷ்பாவல/u', 'புஷ்பாவள', $data);
+           $data = preg_replace('/ரத்நாவல/u', 'ரத்நாவள', $data);
+           $data = preg_replace('/ஸ்தோத்ராவல/u', 'ஸ்தோத்ராவள', $data);
+           $data = preg_replace('/சரணயுக³லாய/u', 'சரணயுக³ளாய', $data);
+           $data = preg_replace('/ப⁴க்திபரிமலாய/u', 'ப⁴க்திபரிமளாய', $data);
+           $data = preg_replace('/பத³யுக³லாய/u', 'பத³யுக³ளளாய', $data);
+           $data = preg_replace('/துலஸீத³ல/u', 'துலஸீத³ள', $data);
+           $data = preg_replace('/ப⁴க்திபரிமலித/u', 'ப⁴க்திபரிமளித', $data);
+           $data = preg_replace('/மஞ்ஜுலதம/u', 'மஞ்ஜுளதம', $data);
+           $data = preg_replace('/சரணயுக³ல/u', 'சரணயுக³ள', $data);
+           $data = preg_replace('/சரணயுக³லத்³ருʼட⁴/u', 'சரணயுக³ளத்³ருʼட⁴', $data);
+           $data = preg_replace('/க்ஷராவலி/u', 'க்ஷராவளி', $data);
+           $data = preg_replace('/கிரணாவலி/u', 'கிரணாவளி', $data);
         }
         return $data;
     }
