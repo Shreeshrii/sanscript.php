@@ -5,8 +5,6 @@
  * Sanscript is a Sanskrit transliteration library. Currently, it supports
  * other Indian languages only incidentally.
  *
- * Last updated on 3/15/2015 by Shree for Kannada Anusvar
- *
  * Released under the MIT and GPL Licenses.
  */
 
@@ -59,7 +57,7 @@ class Sanscript {
                 "virama" => array("্"),
                 "consonants" => array("ক", "খ", "গ", "ঘ", "ঙ", "চ", "ছ", "জ", "ঝ", "ঞ", "ট", "ঠ", "ড", "ঢ", "ণ", "ত", "থ", "দ", "ধ", "ন", "প", "ফ", "ব", "ভ", "ম", "য়", "র", "ল", "ব", "শ", "ষ", "স", "হ", "ळ", "ক্ষ", "জ্ঞ"),
                 "symbols" => array("০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯", "ॐ", "ঽ", "।", "॥"),
-                "other" => array("", "", "", "", "ড", "ঢ", "", "য", ""),
+                "other" => array("", "", "", "", "ড", "ঢ", "", "য", "", ""),
 
             ),
 
@@ -110,7 +108,7 @@ class Sanscript {
                 "candra" => array("ॅ"),
 
                 // Non-Sanskrit consonants
-                "other" => array("क़", "ख़", "ग़", "ज़", "ड़", "ढ़", "फ़", "य़", "ऱ")
+                "other" => array("क़", "ख़", "ग़", "ज़", "ड़", "ढ़", "फ़", "य़", "ऱ", "ऴ")
             ),
 
             /* Gujarati
@@ -140,7 +138,7 @@ class Sanscript {
                 "virama" => array("੍"),
                 "consonants" => array("ਕ", "ਖ", "ਗ", "ਘ", "ਙ", "ਚ", "ਛ", "ਜ", "ਝ", "ਞ", "ਟ", "ਠ", "ਡ", "ਢ", "ਣ", "ਤ", "ਥ", "ਦ", "ਧ", "ਨ", "ਪ", "ਫ", "ਬ", "ਭ", "ਮ", "ਯ", "ਰ", "ਲ", "ਵ", "ਸ਼", "ਸ਼", "ਸ", "ਹ", "ਲ਼", "ਕ੍ਸ਼", "ਜ੍ਞ"),
                 "symbols" => array("੦", "੧", "੨", "੩", "੪", "੫", "੬", "੭", "੮", "੯", "ॐ", "ऽ", "।", "॥"),
-                "other" => array("", "ਖ", "ਗ", "ਜ", "ਡ", "", "ਫ", "", "")
+                "other" => array("", "ਖ", "ਗ", "ਜ", "ਡ", "", "ਫ", "", "", "ਲ਼")
 
             ),
 
@@ -155,7 +153,7 @@ class Sanscript {
                 "virama" => array("್"),
                 "consonants" => array("ಕ", "ಖ", "ಗ", "ಘ", "ಙ", "ಚ", "ಛ", "ಜ", "ಝ", "ಞ", "ಟ", "ಠ", "ಡ", "ಢ", "ಣ", "ತ", "ಥ", "ದ", "ಧ", "ನ", "ಪ", "ಫ", "ಬ", "ಭ", "ಮ", "ಯ", "ರ", "ಲ", "ವ", "ಶ", "ಷ", "ಸ", "ಹ", "ಳ", "ಕ್ಷ", "ಜ್ಞ"),
                 "symbols" => array("೦", "೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯", "ಓಂ", "ಽ", "।", "॥"),
-                "other" => array("", "", "", "", "", "", "ಫ", "", "ಱ")
+                "other" => array("", "", "", "", "", "", "ಫ", "", "ಱ", "ೞ")
 
             ),
 
@@ -170,7 +168,7 @@ class Sanscript {
                 "virama" => array("്"),
                 "consonants" => array("ക", "ഖ", "ഗ", "ഘ", "ങ", "ച", "ഛ", "ജ", "ഝ", "ഞ", "ട", "ഠ", "ഡ", "ഢ", "ണ", "ത", "ഥ", "ദ", "ധ", "ന", "പ", "ഫ", "ബ", "ഭ", "മ", "യ", "ര", "ല", "വ", "ശ", "ഷ", "സ", "ഹ", "ള", "ക്ഷ", "ജ്ഞ"),
                 "symbols" => array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "ഓം", "ഽ", "।", "॥"),
-                "other" => array("", "", "", "", "", "", "", "", "റ")
+                "other" => array("", "", "", "", "", "", "", "", "റ", "ഴ")
 
             ),
 
@@ -185,7 +183,7 @@ class Sanscript {
                 "virama" => array("୍"),
                 "consonants" => array("କ", "ଖ", "ଗ", "ଘ", "ଙ", "ଚ", "ଛ", "ଜ", "ଝ", "ଞ", "ଟ", "ଠ", "ଡ", "ଢ", "ଣ", "ତ", "ଥ", "ଦ", "ଧ", "ନ", "ପ", "ଫ", "ବ", "ଭ", "ମ", "ୟ", "ର", "ଲ", "ଵ", "ଶ", "ଷ", "ସ", "ହ", "ଳ", "କ୍ଷ", "ଜ୍ଞ"),
                 "symbols" => array("୦", "୧", "୨", "୩", "୪", "୫", "୬", "୭", "୮", "୯", "ଓଂ", "ଽ", "।", "॥"),
-                "other" => array("", "", "", "", "ଡ", "ଢ", "", "ଯ", "")
+                "other" => array("", "", "", "", "ଡ", "ଢ", "", "ଯ", "", "")
 
             ),
 
@@ -194,14 +192,13 @@ class Sanscript {
              * Sanskrit-complete
              */
             "tamil" => array(
-               // "vowels" => explode(' ', 'அ ஆ இ ஈ உ ஊ     எ ஏ ஐ ஒ ஓ ஔ'),
                 "vowels" => ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "ருʼ", "ரூʼ", "லுʼ", "லூʼ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஔ"],
                 "vowel_marks" =>  explode(' ', 'ா ி ீ ு ூ ்ருʼ ்ரூʼ ்லுʼ ்லூʼ ெ ே ை ொ ோ ௌ'),
                 "other_marks" => array("ம்", ":", ""),
                 "virama" => array("்"),
-                "consonants" => explode(' ', 'க க² க³ க⁴ ங ச ச² ஜ ச ஞ ட ட² ட³ ட⁴ ண த த² த³ த⁴ ன ப ப² ப³ ப⁴ ம ய ர ல வ ஶ ஷ ஸ ஹ ள க்ஷ ஜ்ஞ'),
+                "consonants" => explode(' ', 'க க² க³ க⁴ ங ச ச² ஜ ஜ² ஞ ட ட² ட³ ட⁴ ண த த² த³ த⁴ ந ப ப² ப³ ப⁴ ம ய ர ல வ ஶ ஷ ஸ ஹ ள க்ஷ ஜ்ஞ'),
                 "symbols" => explode(' ', '0 1 2 3 4 5 6 7 8 9 ௐ ऽ । ॥'),
-                "other" => array("", "", "", "", "", "", "", "", "ற")
+                "other" => array("", "", "", "", "", "", "", "", "ற", "ழ")
             ),
 
             /* Telugu
@@ -215,7 +212,7 @@ class Sanscript {
                 "virama" => array("్"),
                 "consonants" => array("క", "ఖ", "గ", "ఘ", "ఙ", "చ", "ఛ", "జ", "ఝ", "ఞ", "ట", "ఠ", "డ", "ఢ", "ణ", "త", "థ", "ద", "ధ", "న", "ప", "ఫ", "బ", "భ", "మ", "య", "ర", "ల", "వ", "శ", "ష", "స", "హ", "ళ", "క్ష", "జ్ఞ"),
                 "symbols" => array("౦", "౧", "౨", "౩", "౪", "౫", "౬", "౭", "౮", "౯", "ఓం", "ఽ", "।", "॥"),
-                "other" => array("", "", "", "", "", "", "", "", "ఱ")
+                "other" => array("", "", "", "", "", "", "", "", "ఱ", "ఴ")
 
             ),
 
@@ -242,7 +239,7 @@ class Sanscript {
              * '_' is a "null" letter, which allows adjacent vowels.
              */
             "itrans" => array(
-                "vowels" => array("a", "A", "i", "I", "u", "U", "RRi", "RRI", "LLi", "LLI", "", "e", "ai", "", "o", "au"),
+                "vowels" => array("a", "A", "i", "I", "u", "U", "RRi", "RRI", "LLi", "LLI", "^e", "e", "ai", "^o", "o", "au"),
                 "other_marks" => array("M", "H", ".N"),
                 "virama" => array(""),
                 "consonants" => array("k", "kh", "g", "gh", "~N", "ch", "Ch", "j", "jh", "~n", "T", "Th", "D", "Dh", "N", "t", "th", "d", "dh", "n", "p", "ph", "b", "bh", "m", "y", "r", "l", "v", "sh", "Sh", "s", "h", "L", "kSh", "j~n"),
@@ -252,7 +249,7 @@ class Sanscript {
                 "skip" => "_",
                 "accent" => array("\\'", '\\_', '\\"', '{\\m+}'),
                 "combo_accent" => array("\\'H", "\\_H", "\\'M", "\\_M", '\\"H', '\\"M'),
-                "other" => array("q", "K", "G", "z", ".D", ".Dh", "f", "Y", "R")
+                "other" => array("q", "K", "G", "z", ".D", ".Dh", "f", "Y", "R", "^Z")
             ),
 
             /* Harvard-Kyoto
@@ -749,7 +746,7 @@ class Sanscript {
             $data = preg_replace('/ಣ್(ಟ|ಠ|ಡ|ಢ)/u','ಂ${1}', $data);
             $data = preg_replace('/ನ್(ತ|ಥ|ದ|ಧ)/u','ಂ${1}', $data);
             $data = preg_replace('/ಮ್(ಪ|ಫ|ಬ|ಭ)/u','ಂ${1}', $data);
-            $data = preg_replace('/ಮ್(\s|\p{P})/u','ಂ${1}', $data);
+        //   $data = preg_replace('/ಮ್(\s|<|\p{P})/u','ಂ${1}', $data);
         }   
         
         // Malayalam Chillu Support
@@ -796,7 +793,7 @@ class Sanscript {
             $data = preg_replace('/(.)(:)(॒|॑)/u','${1}${3}${2}', $data);
         }
         if ($to === 'tamil' && $options['enableTamilCharPositionFixes'] === true) {
-            $data = preg_replace('/([\s\p{P}])ன/u', '${1}ந', $data);
+            $data = preg_replace('/([\s><\p{P}])ன/u', '${1}ந', $data);
             $data = preg_replace('/^ன/u', 'ந', $data);
             $data = preg_replace('/ன்த/u',"ந்த", $data);
         /*  $data = preg_replace('/ன்ன/u',"ந்ந", $data); */
